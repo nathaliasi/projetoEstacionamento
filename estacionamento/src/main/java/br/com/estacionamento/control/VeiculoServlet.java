@@ -49,7 +49,7 @@ public class VeiculoServlet extends HttpServlet {
 	        Timestamp dataHoraEntrada = new Timestamp(parsedDate.getTime());
 	        
 	        
-	     // Crie um objeto Veiculo com os dados do formulário
+	     // Cria um objeto Veiculo com os dados do formulário
 	        Veiculo veiculo = new Veiculo();
 	        veiculo.setTipoVeiculo(tipoVeiculo);
 	        veiculo.setPlaca(placa);
@@ -57,14 +57,13 @@ public class VeiculoServlet extends HttpServlet {
 	        veiculo.setCor(cor);
 	        veiculo.setDataHoraEntrada(dataHoraEntrada);
 
-	        // Chame o DAO para inserir o veículo no banco de dados
+	        // Chama o DAO para inserir o veículo no banco de dados
 	        boolean inseridoComSucesso = VeiculoDAO.inserirVeiculo(veiculo);
 
 	        if (inseridoComSucesso) {
 	        	response.setContentType("text/html");
-           	    PrintWriter out = response.getWriter();
-           	    out.println("CADASTRADO COM SUCESSO.");
-	            //response.sendRedirect("sucesso.jsp"); // Redireciona para uma página de sucesso após o registro
+           	    //out.println("CADASTRADO COM SUCESSO.");
+	            response.sendRedirect("tabelaveiculos.jsp"); // Redireciona para uma página de sucesso após o registro
 	        } else {
 	        	 response.setContentType("text/html");
 	             PrintWriter out = response.getWriter();
