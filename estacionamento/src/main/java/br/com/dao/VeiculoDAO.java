@@ -128,6 +128,29 @@ public class VeiculoDAO {
         // Calcula o valor da estadia
         return horasEstadia * precoPorHora;
     }
+    
+    public static boolean excluirVeiculo(int veiculoId) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+
+        try {
+            conn = ConnectionFactory.getConnection();
+
+            String sql = "DELETE FROM veiculos WHERE id = ?";
+            stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, veiculoId);
+
+            int rowsAffected = stmt.executeUpdate();
+
+            return rowsAffected > 0; // Retorna true se pelo menos uma linha foi excluída
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            ConnectionFactory.closeConnection(conn);
+        }
+    }
+
 
 }
 

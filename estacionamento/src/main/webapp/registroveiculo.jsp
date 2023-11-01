@@ -36,6 +36,8 @@
         <br>
 
         <input type="submit" value="Registrar">
+        
+        <a href="tabelaveiculos.jsp">Tabela Veículo</a>
     </form>
 </body>
 </html>
