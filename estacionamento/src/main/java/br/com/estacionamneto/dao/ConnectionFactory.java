@@ -1,4 +1,4 @@
-package br.com.dao;
+package br.com.estacionamneto.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

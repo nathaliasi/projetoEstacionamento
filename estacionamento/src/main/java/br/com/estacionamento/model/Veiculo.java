@@ -9,6 +9,7 @@ public class Veiculo {
     private String modelo;
     private String cor;
     private Timestamp dataHoraEntrada;
+    private Cliente cliente;
 
     // Construtor vazio
     public Veiculo() {}
@@ -70,4 +71,12 @@ public class Veiculo {
     public void setDataHoraEntrada(Timestamp dataHoraEntradaStr) {
         this.dataHoraEntrada = dataHoraEntradaStr;
     }
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
 }

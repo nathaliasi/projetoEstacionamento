@@ -1,4 +1,4 @@
-package br.com.dao;
+package br.com.estacionamneto.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,6 +8,7 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.estacionamento.model.Cliente;
 import br.com.estacionamento.model.Veiculo;
 
 public class VeiculoDAO {
@@ -18,13 +19,14 @@ public class VeiculoDAO {
         try {
             conn = ConnectionFactory.getConnection();
 
-            String sql = "INSERT INTO veiculos (tipoVeiculo, placa, modelo, cor, dataEntrada) VALUES (?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO veiculos (tipoVeiculo, placa, modelo, cor, dataEntrada, clienteId) VALUES (?, ?, ?, ?, ?, ?)";
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, veiculo.getTipoVeiculo());
             stmt.setString(2, veiculo.getPlaca());
             stmt.setString(3, veiculo.getModelo());
             stmt.setString(4, veiculo.getCor());
             stmt.setTimestamp(5, veiculo.getDataHoraEntrada());
+            stmt.setInt(6, veiculo.getCliente());  // Certifique-se de ajustar conforme sua lógica
 
             int rowsAffected = stmt.executeUpdate();
 
@@ -58,6 +60,9 @@ public class VeiculoDAO {
                 veiculo.setModelo(rs.getString("modelo"));
                 veiculo.setCor(rs.getString("cor"));
                 veiculo.setDataHoraEntrada(rs.getTimestamp("dataEntrada"));
+                int clienteId = rs.getInt("clienteId");
+                Cliente cliente = ClienteDAO.getClienteById(clienteId);
+                veiculo.setCliente(cliente);
 
                 veiculos.add(veiculo);
             }
@@ -153,4 +158,5 @@ public class VeiculoDAO {
 
 
 }
+
 

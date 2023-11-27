@@ -1,7 +1,7 @@
 <%@page import="java.io.PrintWriter"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
- <%@ page import="br.com.dao.VeiculoDAO" %>
+ <%@ page import="br.com.estacionamneto.dao.VeiculoDAO" %>
  <%@ page import="br.com.estacionamento.model.Veiculo" %>
  <%@ page import="java.text.DecimalFormat" %>
  
@@ -10,10 +10,12 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<link rel="stylesheet" type="text/css" href="style/encerrar.css">
 <title>Relatório Estadia</title>
 </head>
 <body>
 
+	<h1>OI</h1>
 	
 	<%
 	 int veiculoId = Integer.parseInt(request.getParameter("veiculoId"));
@@ -42,7 +44,7 @@
     }
 %>
 
-	<a href="tabelaveiculos.jsp">Tabela Veículos</a>
-	<a href="registroveiculo.jsp">Registrar Veículo</a>
+	<a class="btn" href="tabelaveiculos.jsp">Tabela Veículos</a>
+	<a class="btn" href="registroveiculo.jsp">Registrar Veículo</a>
 </body>
 </html>
